@@ -1,11 +1,46 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<div class="col-md-6 offset-md-3">
+
+<div class="col-md-auto">
     {% if user.is_authenticated %}
     <br />
     <h1 class = "alert alert-success">Hello, {{ user.username }}</h1>
+
+    {% if records %}
+    <table class="table table-dark table-striped table-bordered table-hover">
+        ...<thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">email</th>
+              <th scope="col">Created</th>
+              <th scope="col">View</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+        {% for record in records %}
+        
+                <tr>
+                  <th scope="row">{{record.id}}</th>
+                  <td>{{ record.first_name}} {{ record.last_name }}</td>
+                  <td>{{ record.email }}</td>
+                  <td>{{ record.created_at}}</td>
+                  <td align="center"><button type="button" class="btn btn-sm btn-outline-info">
+                    <i class="fa fa-eye"></i>
+                </button>
+                  </td>
+                  <td></td>
+                  <td></td>
+          
+        {% endfor %}
+    </tr>
+</table>
+    {% else %}
+    <p class = "alert alert-danger">There are no records... </p>
+    {% endif %}
 
     {% else %}
 

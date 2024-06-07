@@ -34,3 +34,9 @@ def logout_user(request):
     messages.success(request, 'You have now been logged out...')
     context ={'alert' : 'success' }
     return render(request, 'home.html', context)
+
+def register_user(request):
+    
+    return render(request, 'register.html', {})
+
+    

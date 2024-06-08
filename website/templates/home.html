@@ -28,12 +28,10 @@
                   <td>{{ record.first_name}} {{ record.last_name }}</td>
                   <td>{{ record.email }}</td>
                   <td>{{ record.created_at}}</td>
-                  <td align="center"><button type="button" class="btn btn-sm btn-outline-info">
-                    <i class="fa fa-eye"></i>
-                </button>
-                  </td>
-                  <td></td>
-                  <td></td>
+                  <td align="center"><a class="nav-link" href="{% url 'record' record.id %}">
+                    <button type="button" class="btn btn-sm"><i class="fa fa-eye" style="font-size:15px;color:lightblue;"></i></button></a></td>
+                  <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i></button></td>
+                  <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i></button></td>
           
         {% endfor %}
     </tr>

@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
-<h1>Customer record</h1>
+<h1 class = "alert alert-success">Customer record for: {{ user_record.first_name }} {{ user_record.last_name }}</h1>
+
+
+<div class="card">
+    <div class="card-header"><h3>
+        {{ user_record.first_name }} {{ user_record.last_name }}</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 bg-light border rounded"><h5>Address:</h5>
+            </div>
+            <div class="col-md-6 bg-light border">
+                <h5 class="card-title">{{ user_record.address_line1}}</h5>
+            </div>
+            <div class="col-md-6 bg-light border"><h5></h5>
+            </div>
+            <div class="col-md-6 bg-light border">
+                <h5 class="card-title">{{ user_record.city}}, {{user_record.state}}, {{user_record.postcode }}</h5>
+            </div>
+        </div>
+      <p class="card-text">{{ user_record.email }}</p>
+      <p class="card-text">{{ user_record.phone }}</p>
+      <p class="card-text">{{ user_record.phone }}</p>
+      <p class="card-text">{{ user_record.date_of_birth }}</p>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+    </div>
+  </div>
+  
+
+
+{% endif %}
 
 {% endblock content %}

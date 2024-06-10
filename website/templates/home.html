@@ -9,7 +9,7 @@
 
     {% if records %}
     <table class="table table-dark table-striped table-bordered table-hover">
-        ...<thead>
+        <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
@@ -33,9 +33,48 @@
                   <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i></button></td>
                   <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i></button></td>
           
+                   
+                  
         {% endfor %}
     </tr>
 </table>
+
+<div class="row">
+    {% for record in records %}
+        {% if forloop.counter0|divisibleby:3 and not forloop.first %}<div class="w-33"></div>{% endif %}
+        <div class="col">
+            
+            <div class="card border-primary text-white bg-secondary mb-3">
+                <h2 class="text-center mb-3">
+                    {{ record.first_name}} {{ record.last_name }}
+                </h2>
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        {{ record.email }}
+                    </h5>
+                    <p class="card-text">
+                            <p class="navbar-brand">Created on: {{ record.created_at }}                            
+                            <a href="{% url 'record' record.id %}">
+                                <button type="button" class="btn btn-sm"><i class="fa fa-eye" style="font-size:15px;color:lightblue;"></i>
+                                </button>
+                            </a>    
+                            <a href="{% url 'record' record.id %}">
+                                <button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i>
+                                </button>
+                            </a> 
+                            <a href="{% url 'record' record.id %}">
+                                <button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i>
+                                </button>
+                            </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
     {% else %}
     <p class = "alert alert-danger">There are no records... </p>
     {% endif %}
@@ -56,4 +95,5 @@
     </form>
     {% endif %}
 </div>
+
 {% endblock content %}

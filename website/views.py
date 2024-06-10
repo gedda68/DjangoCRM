@@ -3,10 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
 from .models import Record
+import math
 
 # Create your views here.
 def home (request):
     records = Record.objects.all()
+    #record_count = records.count()
+    record_count= records.count()
+    num_rows = math.ceil(record_count/3)
     
     # check to see if logging in
     if request.method == 'POST':
@@ -18,17 +22,14 @@ def home (request):
         if user is not None:
             login(request, user)
             messages.success(request, "You have been logged in!")
-            context ={'alert' : 'success' }
-            
+            context ={'alert' : 'success' }           
             return render(request, 'home.html', context)
         else:
             messages.success(request, "There was an error logging, please try again...")
-            context ={'alert' : 'warning' }
-            
+            context ={'alert' : 'warning' }            
             return render(request, 'home.html', context)
-
     else:        
-        return render(request, 'home.html', {'records':records})
+        return render(request, 'home.html', {'records':records, 'record_count': record_count, 'num_rows': num_rows})
 
 # def login_user(request):
 #     pass
@@ -68,5 +69,8 @@ def user_record(request, pk):
         messages.success(request, "You must logged into view the records!")
         context ={'alert' : 'warning' }
         return render(request, 'home.html', context)
+
+
+    
 
          

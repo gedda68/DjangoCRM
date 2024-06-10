@@ -15,18 +15,39 @@
             <div class="col-md-6 bg-light border rounded"><h5>Address:</h5>
             </div>
             <div class="col-md-6 bg-light border">
-                <h5 class="card-title">{{ user_record.address_line1}}</h5>
+                <h5 class="card-title">
+                    {% if user_record.address_line1 is None %}
+                    {% else %}
+                    {{ user_record.address_line1}}, 
+                    {% endif %}
+                   </h5>
             </div>
             <div class="col-md-6 bg-light border"><h5></h5>
             </div>
             <div class="col-md-6 bg-light border">
-                <h5 class="card-title">{{ user_record.city}}, {{user_record.state}}, {{user_record.postcode }}</h5>
+                <h5 class="card-title">
+                    {% if user_record.city is None %}
+                    {% else %}
+                    {{ user_record.city}}, 
+                    {% endif %}
+
+                    {% if user_record.state is None %}
+                    {% else %}
+                    {{ user_record.state}}, 
+                    {% endif %}
+
+                    {% if user_record.postcode is None %}
+                    {% else %}
+                    {{ user_record.postcode}}, 
+                    {% endif %}
             </div>
         </div>
       <p class="card-text">{{ user_record.email }}</p>
       <p class="card-text">{{ user_record.phone }}</p>
       <p class="card-text">{{ user_record.phone }}</p>
       <p class="card-text">{{ user_record.date_of_birth }}</p>
+      <p class="card-text">{{ user_record.bio }}</p>
+      
       <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
     </div>
   </div>

@@ -1,6 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
+#from formset.richtext.widgets import RichTextarea
+
+
 
 
 class SignUpForm(UserCreationForm):
@@ -30,3 +34,25 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
         
+# Add Record Form
+class AddRecordForm(forms.ModelForm):
+    title = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Title", "class":"form-control"}), label="")
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
+    middle_name = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Middle Name", "class":"form-control"}), label="")
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
+    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="")
+    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Phone", "class":"form-control"}), label="")
+    address_line1 = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Address Line 1", "class":"form-control"}), label="")
+    address_line2 = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Address Line 2", "class":"form-control"}), label="")
+    city = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="")
+    state = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
+    postcode = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Postcode", "class":"form-control"}), label="")
+    country = forms.CharField(widget=forms.widgets.TextInput(attrs={"placeholder":"Country", "class":"form-control"}), label="")
+    date_of_birth = forms.DateField(label="date of birth", widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}), input_formats=["%Y-%m-%d"])
+   # bio = forms.CharField(richtext_widget = RichTextarea(control_elements=[controls.Bold(),controls.Italic(),controls.Heading(),]))
+    
+    class Meta:
+        model = Record
+        exclude = ("user",)
+
+    

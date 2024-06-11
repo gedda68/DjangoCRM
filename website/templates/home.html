@@ -30,8 +30,13 @@
                   <td>{{ record.created_at}}</td>
                   <td align="center"><a class="nav-link" href="{% url 'record' record.id %}">
                     <button type="button" class="btn btn-sm"><i class="fa fa-eye" style="font-size:15px;color:lightblue;"></i></button></a></td>
-                  <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i></button></td>
-                  <td align="center"><button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i></button></td>
+                  
+                  
+                  <td align="center"><a class="nav-link" href="{% url 'update_record' record.id %}">
+                    <button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i></button></a></td>
+
+                  <td align="center"><a class="nav-link" href="{% url 'delete_record' record.id %}">
+                    <button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i></button></a></td>
           
                    
                   
@@ -58,11 +63,11 @@
                                 <button type="button" class="btn btn-sm"><i class="fa fa-eye" style="font-size:15px;color:lightblue;"></i>
                                 </button>
                             </a>    
-                            <a href="{% url 'record' record.id %}">
+                            <a href="{% url 'update_record' record.id %}">
                                 <button type="button" class="btn btn-sm"><i class="fa fa-pencil" style="font-size:15px;color:lightgreen;"></i>
                                 </button>
                             </a> 
-                            <a href="{% url 'record' record.id %}">
+                            <a href="{% url 'delete_record' record.id %}">
                                 <button type="button" class="btn btn-sm"><i class="fa fa-trash" style="font-size:15px;color:#FF474C;"></i>
                                 </button>
                             </a>

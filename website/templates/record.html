@@ -48,12 +48,14 @@
       <p class="card-text">{{ user_record.date_of_birth }}</p>
       <p class="card-text">{{ user_record.bio }}</p>
       
-      <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+      <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+      <a href="{% url 'delete_record' user_record.id %}" class="btn btn-danger">Delete</a>
+
+      <a href="{% url 'update_record' user_record.id %}" class="btn btn-info">Update Record</a>
+
+
     </div>
   </div>
   
-
-
 {% endif %}
-
 {% endblock content %}

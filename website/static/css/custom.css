@@ -1,0 +1,46 @@
+h1 {
+    line-height: 3;
+    color: rgb(87, 159, 206);
+  }
+
+.alert-success {
+  line-height: 3;
+    color: rgb(87, 159, 206);
+    background-color: rgb(36, 85, 117);
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: rgb(87, 159, 206);
+}
+.table-hover tbody tr:hover {
+  background-color: AliceBlue;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+  background-color: rgb(36, 85, 117);
+  color: white;
+}
+
+
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: rgba(152, 96, 96, 0.5);
+}
+
+
+.btn-primary {
+  color: rgb(87, 159, 206);
+  background-color: rgb(36, 85, 117);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #00b3db;
+  border-color: #285e8e; /*set the color you want here*/
+}
+
+.btn-danger {
+  background-color: rgb(173, 70, 32);
+}
